@@ -1,35 +1,28 @@
 import {useState} from 'react'
 
 const App = () => {
-  // Use single obj instead of separate state
-  const [clicks, setClicks] = useState({
-    left: 0, right: 0
-  })
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0) 
+  const [allClicks, setAll] = useState([])
 
-  // Create two click handlers, and increment the corresponding left/right based on click
-  // then use the state setter function on em.
   const handleLeftClick = () => {
-    const newClicks = {
-      ...clicks,
-      left: clicks.left + 1 
-    }
-    setClicks(newClicks)
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
   }
 
   const handleRightClick = () => {
-    const newClicks = {
-      ...clicks,
-      right: clicks.right + 1
-    }
-    setClicks(newClicks)
+    setAll(allClicks.concat('R'))
+    setRight(right + 1)
   }
 
   return (
     <div>
-      {clicks.left} 
+      {left} 
       <button onClick = {handleLeftClick}>Left</button>
       <button onClick = {handleRightClick}>Right</button>
-      {clicks.right}
+      {right}
+
+      <p>{allClicks.join(' ')}</p>
     </div>
   )
 }
