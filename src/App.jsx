@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import History from './History.jsx'
 
 const App = () => {
   // State inits
@@ -32,7 +33,7 @@ const App = () => {
       {right}
 
       <p>Total clicks: {total}</p>
-      <p>{allClicks.join(' ')}</p>
+      <History allClicks = {allClicks} />
     </div>
   )
 }
