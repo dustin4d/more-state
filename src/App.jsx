@@ -7,14 +7,15 @@ const App = () => {
   const [allClicks, setAll] = useState([])
   const [total, setTotal] = useState(0)
 
-  // Left click handling w/ 
+  // Left click handling w/ state batching in mind
   const handleLeftClick = () => {
-    setAll(allClicks.concat('L'))
-    const updatedLeft = left + 1
-    setLeft(updatedLeft)
-    setTotal(updatedLeft + right)
+    setAll(allClicks.concat('L')) // Use non-mutating method for the state setter
+    const updatedLeft = left + 1  // Use a temporary variable to hold the state value
+    setLeft(updatedLeft)          // State setter for left, using that temp variable
+    setTotal(updatedLeft + right) // Use the temporary state variable and combine with right
   }
 
+  // Right click handling w/ state batching in mind
   const handleRightClick = () => {
     setAll(allClicks.concat('R'))
     const updatedRight = right + 1
@@ -22,6 +23,7 @@ const App = () => {
     setTotal(left + updatedRight)
   }
 
+  // Render method
   return (
     <div>
       {left} 
