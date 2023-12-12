@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import History from './History.jsx'
+import Button from './Button.jsx'
 
 const App = () => {
   // State inits
@@ -28,8 +29,8 @@ const App = () => {
   return (
     <div>
       {left} 
-      <button onClick = {handleLeftClick}>Left</button>
-      <button onClick = {handleRightClick}>Right</button>
+      <Button handleClick={handleLeftClick} text='Left'/>
+      <Button handleClick={handleRightClick} text='Right' />
       {right}
 
       <p>Total clicks: {total}</p>
